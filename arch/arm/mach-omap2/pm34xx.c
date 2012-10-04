@@ -359,7 +359,7 @@ static void omap3_pm_idle(void)
 {
 	local_fiq_disable();
 
-	if (omap_irq_pending())
+	if (omap_irq_pending() || !omap3_has_io_wakeup())
 		goto out;
 
 	trace_power_start(POWER_CSTATE, 1, smp_processor_id());
